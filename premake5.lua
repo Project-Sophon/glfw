@@ -20,7 +20,6 @@ project "GLFW"
 
 	filter "system:linux"
 		pic "On"
-
 		systemversion "latest"
 
 		files {
@@ -56,11 +55,35 @@ project "GLFW"
 			"src/osmesa_context.c"
 		}
 
-		defines 
-		{ 
+		defines
+		{
 			"_GLFW_WIN32",
 			"_CRT_SECURE_NO_WARNINGS"
 		}
+
+	filter "system:macosx"
+	    pic "On"
+
+  		files
+  		{
+ 			"src/cocoa_init.m",
+            "src/cocoa_monitor.m",
+            "src/cocoa_window.m",
+ 			"src/cocoa_joystick.h",
+            "src/cocoa_joystick.m",
+	        "src/cocoa_platform.h",
+ 			"src/cocoa_time.c",
+            "src/posix_thread.c",
+            "src/nsgl_context.h",
+            "src/nsgl_context.m",
+            "src/egl_context.c",
+            "src/osmesa_context.c"
+  		}
+
+  		defines
+  		{
+            "_GLFW_COCOA"
+        }
 
 	filter "configurations:Debug"
 		runtime "Debug"
